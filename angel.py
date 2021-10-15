@@ -57,7 +57,8 @@ class Player():
 
 
 person_list = []
-with open('playerlist.csv') as csv_file:
+def read_csv(filename):
+    with open(filename, 'r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
         for row in csv_reader:
@@ -83,12 +84,14 @@ with open('playerlist.csv') as csv_file:
                     yearofstudy = yearofStudy,
                     genderpref = genderPref)
 
-## how to validate data
+## MISSING validate data
 
                 line_count += 1
         logger.info(f'Processed {line_count} lines.')
         print (f'Processed {line_count} lines.')
-        # return person_list
+    return person_list
+
+read_csv("playerlist.csv")
 
     # validatePairings(players)
     # '''
