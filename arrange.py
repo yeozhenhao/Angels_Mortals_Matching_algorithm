@@ -30,27 +30,7 @@ RELAX_NO_SAME_CG_REQUIREMENT_PERCENTAGE = 0.05
 
 
 def get_house_from_player(player):
-    if player.housenumber == "1":
-        return "M1"
-    elif player.housenumber == "2":
-        return "M2"
-    elif player.housenumber == "3":
-        return "M3"
-    elif player.housenumber == "4":
-        return "M4"
-    elif player.housenumber == "5":
-        return "M5"
-    elif player.housenumber == "6":
-        return "M6"
-    elif player.housenumber == "7":
-        return "M7"
-    elif player.housenumber == "8":
-        return "M8"
-    elif player.housenumber == "9":
-        return "M9"
-    elif player.housenumber == "10":
-        return "M10"
-    else:
+    if player.housenumber == "":
         raise ValueError('House number provided (' + player.housenumber +
                          ') for player ' + str(player.username) + ' is invalid!')
 
