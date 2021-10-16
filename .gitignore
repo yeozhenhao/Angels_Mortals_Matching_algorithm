@@ -4,3 +4,4 @@ final/
 *.csv
 *.tsv
 *.pyc
+logs/
