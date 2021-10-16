@@ -20,7 +20,9 @@ DISPLAY_GRAPH = True
 
 # Changing this value changes how much we care about the houses of players being the same
 # If 1 - we don't care, and house de-conflicting is ignored. 0 means we won't allow any players of the same house to be matched.
-RELAX_SAME_HOUSE_REQUIREMENT_PERCENTAGE = 0.00
+RELAX_GENDERPREF_REQUIREMENT_PERCENTAGE = 0.05
+
+RELAX_SAME_HOUSE_REQUIREMENT_PERCENTAGE = 0.05
 
 RELAX_SAME_FACULTY_REQUIREMENT_PERCENTAGE = 0.00
 
@@ -54,7 +56,7 @@ def get_house_from_player(player):
 def is_gender_pref_respected(player_being_checked, other_player):
     if player_being_checked.genderpref == GENDER_NOPREF:
         # If they have no preference, always respected
-        print (f"No gender pref")
+        # print (f"No gender pref")
         return True
     else:
         # Otherwise check if the other_player gender is what is wanted
@@ -76,9 +78,14 @@ def is_there_edge_between_players(angel_player, mortal_player):
     '''
     print (f"Checking {angel_player} and {mortal_player}")
 
-    # Check if gender choice is respected
-    gender_pref_is_respected = are_gender_prefs_respected(
+    #Check if gender choice is respected
+    random_relax_genderpref_requirement = random.random() < RELAX_GENDERPREF_REQUIREMENT_PERCENTAGE
+    if random_relax_genderpref_requirement:
+        gender_pref_is_respected = True
+    else:
+        gender_pref_is_respected = are_gender_prefs_respected(
         angel_player, mortal_player)
+
 
     # # Check house and faculty are not the same
     # random_relax_fac_requirement = random.random() < RELAX_SAME_FACULTY_REQUIREMENT_PERCENTAGE
@@ -95,7 +102,7 @@ def is_there_edge_between_players(angel_player, mortal_player):
         players_are_from_same_house = get_house_from_player(
             angel_player) == get_house_from_player(mortal_player)
 
-    valid_pairing = gender_pref_is_respected and (not  players_are_from_same_house) #and (not players_are_from_same_faculty) # Remove same-house reqr -->  #or players_are_from_same_house) and
+    valid_pairing = gender_pref_is_respected and (not players_are_from_same_house) #and (not players_are_from_same_faculty) # Remove same-house reqr -->  #or players_are_from_same_house) and
     # if players_are_from_same_faculty:
     #     print (f"players from same fac\n")
     #ignore this requirement
@@ -141,16 +148,13 @@ def angel_mortal_arrange(player_list):
     print (f"Printing original player list: ")
     for player in player_list:
         print (f"{player}")
-
+    print (f"Original player list size: {len(player_list)}")
     print (f"\n\n")
-
-    
-    print (f"Player list size: {len(player_list)}")
 
     list_of_player_chains = []
 
-    #for G in graphs:
-     #   draw_graph(G)
+    # for G in graphs:
+    #    draw_graph(G)
 
     for G in graphs:
 
@@ -162,7 +166,6 @@ def angel_mortal_arrange(player_list):
         print (f"Number of nodes in graph: {G.number_of_nodes()}")
         if DISPLAY_GRAPH:
             draw_graph(G)
-
         # Find out if there is DEFINITELY no hamiltonian cycle
         is_there_full_cycle = is_there_definitely_no_hamiltonian_cycle(G)
         print (f"Is there DEFINITELY no full cycle? - {is_there_full_cycle}")
@@ -177,7 +180,7 @@ def angel_mortal_arrange(player_list):
         full_cycle = hamilton(G) #get_one_full_cycle_from_graph(G)
         #full_cycle = get_hamiltonian_path_from_graph(G)
         # Draw the full cycle if it exists
-        if full_cycle is not None:
+        if full_cycle is not None and (G.number_of_nodes() > (0.8 * len(player_list))): #do not accept if number of nodes is < 80% of participants
             G_with_full_cycle = convert_full_cycle_to_graph(full_cycle)
             draw_graph(G_with_full_cycle)
             list_of_player_chains.append(full_cycle)

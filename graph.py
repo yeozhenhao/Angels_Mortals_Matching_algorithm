@@ -65,7 +65,7 @@ def is_there_definitely_no_hamiltonian_cycle(G):
     nodes = G.nodes()
     for node in nodes:
         # If some node only has one neighbour - NO HAM-CYCLE EXISTS
-        if len(G.neighbors(node)) <= 1:
+        if len(list(G.neighbors(node))) <= 1:
             print (f"Node has <= 1 neighbour: {node}")
             return True
 
@@ -94,38 +94,33 @@ def get_one_full_cycle_from_graph(G):
 
 def hamilton(G):
     # Start with F - which is a tuple of the graph and the first node (the path so far)
-    F = [(G, [G.nodes()[0]])]
+    F = [(G,[list(G.nodes())[0]])]
     n = G.number_of_nodes()
-
-
-
     # while we still have elements in F
     while F:
         graph, path = F.pop()
         confs = []
-
+        neighbors = (node for node in graph.neighbors(path[-1])
+                     if node != path[-1])  # exclude self loops
         # Look at the neighbours of the latest-found node in the path
-        for node in graph.neighbors(path[-1]):
+        for neighbor in neighbors:
             # conf_p is a copy of the path
             conf_p = path[:]
             # Append the current neighbour to the path
-            conf_p.append(node)
-
+            conf_p.append(neighbor)
             # Create a graph from the current
             conf_g = nx.Graph(graph)
-
             # Remove the node that we just used to find neighbours for
             conf_g.remove_node(path[-1])
-
             # Add this to the new working path
-            confs.append((conf_g, conf_p))
+            confs.append((conf_g,conf_p))
         for g, p in confs:
             if len(p) == n:
                 return p
             else:
                 path_length = len(p)
                 print (f"Path length (progress): {path_length} / {n}")
-                F.append((g, p))
+                F.append((g,p))
     return None
 
 
@@ -144,7 +139,7 @@ def full_cycle_to_edges(full_cycle):
     # Iterate from first element to last minus one
     # Since we want grouping of two
     edges_in_full_cycle = []
-    for i in xrange(0, len(full_cycle) - 1):
+    for i in range(0, len(full_cycle) - 1):
         edges_in_full_cycle.append((full_cycle[i], full_cycle[i + 1]))
 
     # Link the first and last two nodes as well

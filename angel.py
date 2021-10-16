@@ -28,8 +28,8 @@ import random
 import logging
 import datetime
 # # FROMS
-# from models import Player
-# from arrange import angel_mortal_arrange
+from models import Player
+from arrange import angel_mortal_arrange
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
@@ -45,23 +45,13 @@ logging.basicConfig(
 PLAYERFILE = "playerlist.csv"
 
 # Constants
-GENDER_MALE = "Male"
-GENDER_FEMALE = "Female"
-GENDER_NONBINARY = "Non-binary"
-GENDER_NOPREF = "No preference"
+GENDER_MALE = "male"
+GENDER_FEMALE = "female"
+GENDER_NONBINARY = "non-binary"
+GENDER_NOPREF = "no preference"
 
-GENDER_SWAP_PREFERENCE_PERCENTAGE = 0.0
+GENDER_SWAP_PREFERENCE_PERCENTAGE = 0.0 #100 if you wanna change all players with no gender pre to have genderpref = opposite gender, 0 if you wanna all to remain as no geneder pref
 
-
-class Player():
-    def __init__(self, **kwargs):
-        self.username = kwargs.get('username')
-        self.playername = kwargs.get('playername')
-        self.housenumber = kwargs.get('housenumber')
-        self.cgnumber = kwargs.get('cgnumber')
-        self.genderplayer = kwargs.get('genderplayer')
-        self.yearofstudy = kwargs.get('yearofstudy')
-        self.genderpref = kwargs.get('genderpref')
 
 
 
@@ -84,6 +74,7 @@ def read_csv(filename):
                 genderPlayer=row[4].strip().lower()
                 yearofStudy=row[5].strip().lower()
                 genderPref=row[6].strip().lower()
+                faculty=row[7].strip().lower()
 
                 new_person = Player(username = playerUsername,
                     playername = playerName,
@@ -91,7 +82,8 @@ def read_csv(filename):
                     cgnumber = CGnumber,
                     genderplayer = genderPlayer,
                     yearofstudy = yearofStudy,
-                    genderpref = genderPref)
+                    genderpref = genderPref,
+                    faculty = faculty)
                 person_list.append(new_person)
                 logger.info(f'Adding ' + str(new_person))
                 print(f'Adding ' + str(new_person))
@@ -129,6 +121,10 @@ def separate_players(player_list):
             logger.info(f'Added Player: {player.username}, Gender: {player.genderplayer}, GenderPref: {player.genderpref} to male_female_list')
     return (male_male_list, male_female_list, female_female_list)
 
+
+'''
+savegenderlist is unused
+'''
 def savegenderlist(genderlist: list):
     temp = []
     for k, v in players.items():
@@ -142,3 +138,54 @@ playerList = read_csv("playerlist.csv")
 
 gendermatchinglist = separate_players(playerList)
 # savegenderlist(male_male_list)
+
+
+def modify_player_list(player_list):
+    # Force hetero mix
+    for player in player_list:
+        if player.genderpref == GENDER_NOPREF:
+            random_change_preference = random.random() < GENDER_SWAP_PREFERENCE_PERCENTAGE
+            if player.genderplayer == GENDER_MALE and random_change_preference:
+                print (f"Male -> Female")
+                player.genderpref = GENDER_FEMALE
+            elif player.genderplayer == GENDER_FEMALE and random_change_preference:
+                print (f"Female -> Male")
+                player.genderpref = GENDER_MALE
+
+
+def write_to_csv(index, *player_lists):
+    '''
+    Writes a variable number of player lists to csv
+    '''
+    for player_list in player_lists:
+        if player_list is not None:
+            print (f"Length of list: {len(player_list)}")
+            cur_time = time.strftime("%Y-%m-%d %H-%M-%S")
+            with open(f"{index} - {cur_time}.csv", 'w') as f:
+                for player in player_list:
+                    f.write(player.to_csv_row())
+                    f.write("\n")
+            # write the first player again to close the loop
+                f.write(player_list[0].to_csv_row())
+                f.write("\n")
+                f.close()
+
+
+
+if __name__ == "__main__":
+    print (f"\n\n")
+    print (f"=============================================")
+    print (f"tAngel 2021 engine initializing..............")
+    print (f"=============================================")
+    print (f"\n\n")
+
+    # Get list of Player objects from csv file
+    player_list = read_csv(PLAYERFILE)
+    # Map the player list through any neccessary transformations
+    modify_player_list(player_list)
+    # separate the players into player-chains (connected components)
+    list_of_player_chains = angel_mortal_arrange(player_list)
+    # Write each chain to a separate csv
+    print("done")
+    for index, player_chain in enumerate(list_of_player_chains):
+         write_to_csv(index, player_chain)
