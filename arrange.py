@@ -20,11 +20,13 @@ DISPLAY_GRAPH = True
 
 # Changing this value changes how much we care about the houses of players being the same
 # If 1 - we don't care, and house de-conflicting is ignored. 0 means we won't allow any players of the same house to be matched.
-RELAX_GENDERPREF_REQUIREMENT_PERCENTAGE = 0.05
+RELAX_GENDERPREF_REQUIREMENT_PERCENTAGE = 0.10
 
-RELAX_SAME_HOUSE_REQUIREMENT_PERCENTAGE = 0.05
+RELAX_NO_SAME_HOUSE_REQUIREMENT_PERCENTAGE = 0.05
 
-RELAX_SAME_FACULTY_REQUIREMENT_PERCENTAGE = 0.00
+RELAX_NO_SAME_CG_REQUIREMENT_PERCENTAGE = 0.05
+
+# RELAX_NO_SAME_FACULTY_REQUIREMENT_PERCENTAGE = 0.00 #not used
 
 
 def get_house_from_player(player):
@@ -50,7 +52,14 @@ def get_house_from_player(player):
         return "M10"
     else:
         raise ValueError('House number provided (' + player.housenumber +
-                         ') for player ' + str(player) + ' is invalid!')
+                         ') for player ' + str(player.username) + ' is invalid!')
+
+
+def get_cg_from_player(player):
+    if (player.cgnumber == ""):
+        return "NA"
+    else:
+        return player.cgnumber
 
 
 def is_gender_pref_respected(player_being_checked, other_player):
@@ -72,8 +81,8 @@ def are_gender_prefs_respected(angel_player, mortal_player):
 def is_there_edge_between_players(angel_player, mortal_player):
     '''
     Checks if two players are valid as an angel-mortal pair i.e. an "edge"
-    exists between them. If we are enforcing a heterogenous gender mix for these
-    players - check if they are of the same gender and return False (no edge)
+    exists between them. E.g. If we are enforcing a heterogenous gender mix for these
+    players - check their gender preferences and return False (no edge)
     between them
     '''
     print (f"Checking {angel_player} and {mortal_player}")
@@ -88,28 +97,44 @@ def is_there_edge_between_players(angel_player, mortal_player):
 
 
     # # Check house and faculty are not the same
+
+    '''
+    no same faculty requirement is not used
+    '''
     # random_relax_fac_requirement = random.random() < RELAX_SAME_FACULTY_REQUIREMENT_PERCENTAGE
     # if random_relax_fac_requirement:
     #     players_are_from_same_faculty = False
     # else:
     #     players_are_from_same_faculty = angel_player.faculty == mortal_player.faculty
 
-    # Relax house requirement
-    random_relax_house_requirement = random.random() < RELAX_SAME_HOUSE_REQUIREMENT_PERCENTAGE
+    # Relax no same house requirement
+    random_relax_house_requirement = random.random() < RELAX_NO_SAME_HOUSE_REQUIREMENT_PERCENTAGE
     if random_relax_house_requirement:
         players_are_from_same_house = False
     else:
         players_are_from_same_house = get_house_from_player(
             angel_player) == get_house_from_player(mortal_player)
 
-    valid_pairing = gender_pref_is_respected and (not players_are_from_same_house) #and (not players_are_from_same_faculty) # Remove same-house reqr -->  #or players_are_from_same_house) and
+
+    # Relax no same CG requirement
+    random_relax_cg_requirement = random.random() < RELAX_NO_SAME_CG_REQUIREMENT_PERCENTAGE
+    if random_relax_cg_requirement:
+        players_are_from_same_cg = False
+    else:
+        players_are_from_same_cg = get_cg_from_player(
+            angel_player) == get_cg_from_player(mortal_player)
+
+
+    valid_pairing = gender_pref_is_respected and (not players_are_from_same_house) and (not players_are_from_same_cg)#and (not players_are_from_same_faculty) # Remove same-house reqr -->  #or players_are_from_same_house) and
     # if players_are_from_same_faculty:
     #     print (f"players from same fac\n")
     #ignore this requirement
-    if players_are_from_same_house:
-        print (f"players from same house\n")
     if not gender_pref_is_respected:
         print (f"gender pref not respected")
+    if players_are_from_same_house:
+        print (f"players from same house\n")
+    if players_are_from_same_cg:
+        print(f"players from same CG\n")
 
     print (f"\n")
 
