@@ -8,6 +8,7 @@ import networkx as nx
 import time
 import random
 from random import shuffle
+from random import randint
 
 # Constants
 GENDER_MALE = "male"
@@ -31,13 +32,13 @@ RELAX_NO_SAME_CG_REQUIREMENT_PERCENTAGE = 0.05
 
 def get_house_from_player(player):
     if player.housenumber == "":
-        raise ValueError('House number provided (' + player.housenumber +
-                         ') for player ' + str(player.username) + ' is invalid!')
+        raise ValueError('House number provided ' + player.housenumber +
+                         ' for player ' + str(player.username) + ' is invalid!')
 
 
 def get_cg_from_player(player):
     if (player.cgnumber == ""):
-        return "NA"
+        return randint(60,200) #Nursing has no CGs, thus we do not want to conflict with Medicine CGs 1-50
     else:
         return player.cgnumber
 
