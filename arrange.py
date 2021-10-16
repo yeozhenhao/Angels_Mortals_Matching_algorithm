@@ -4,6 +4,16 @@ from graph import get_graph_from_edges, draw_graph, get_full_cycles_from_graph,\
     full_cycle_to_edges, get_one_full_cycle, convert_full_cycle_to_graph,\
     get_one_full_cycle_from_graph, get_hamiltonian_path_from_graph,\
     is_there_definitely_no_hamiltonian_cycle, hamilton
+
+import datetime
+import logging
+logger = logging.getLogger(__name__)
+logging.basicConfig(
+    filename=f'logs/{datetime.datetime.utcnow().strftime("%Y-%m-%d-%H-%M-%S")}.log',
+    filemode='w',
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
+)
+
 import networkx as nx
 import time
 import random
@@ -21,11 +31,11 @@ DISPLAY_GRAPH = True
 
 # Changing this value changes how much we care about the houses of players being the same
 # If 1 - we don't care, and house de-conflicting is ignored. 0 means we won't allow any players of the same house to be matched.
-RELAX_GENDERPREF_REQUIREMENT_PERCENTAGE = 0.10
+RELAX_GENDERPREF_REQUIREMENT_PERCENTAGE = 0.30
 
-RELAX_NO_SAME_HOUSE_REQUIREMENT_PERCENTAGE = 0.05
+RELAX_NO_SAME_HOUSE_REQUIREMENT_PERCENTAGE = 0.30
 
-RELAX_NO_SAME_CG_REQUIREMENT_PERCENTAGE = 0.05
+RELAX_NO_SAME_CG_REQUIREMENT_PERCENTAGE = 0.00
 
 # RELAX_NO_SAME_FACULTY_REQUIREMENT_PERCENTAGE = 0.00 #not used
 
@@ -130,7 +140,8 @@ def get_player_edges_from_player_list(player_list):
             if other_player != player:
                 if is_there_edge_between_players(player, other_player):
                     player_edges.append((player, other_player))
-
+                else:
+                    logger.info(f"{player} and {other_player} have conflicts") # to keep track who was rejected
     return player_edges
 
 
@@ -190,6 +201,9 @@ def angel_mortal_arrange(player_list):
             G_with_full_cycle = convert_full_cycle_to_graph(full_cycle)
             draw_graph(G_with_full_cycle)
             list_of_player_chains.append(full_cycle)
+            # find out which nodes were missing
+            logger.info(f"{list(G.nodes())}")
+            print(f"Found a full cycle!")
         else:
             print (f"There is no full cycle - sorry! This means that the current set of players cannot form a perfect chain given the arrange requirements")
 

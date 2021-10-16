@@ -5,7 +5,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
-    filename=f'logs/ListGenerator {datetime.datetime.utcnow().strftime("%Y-%m-%d-%H-%M-%S")}.log',
+    filename=f'logs/{datetime.datetime.utcnow().strftime("%Y-%m-%d-%H-%M-%S")}.log',
     filemode='w',
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
 )
