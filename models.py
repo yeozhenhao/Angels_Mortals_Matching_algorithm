@@ -8,7 +8,7 @@ class Player():
             return ",".join(args)
 
         def to_csv_row(self):
-            return self.separate_args_with_commas(self.username, self.playername, self.housenumber, self.cgnumber, self.genderplayer, self.yearofstudy, self.genderpref, self.faculty)
+            return self.separate_args_with_commas(self.username, self.playername, self.housenumber, self.cgnumber, self.genderplayer, self.yearofstudy, self.genderpref, self.faculty, self.interests, self.twotruthsonelie, self.messageformortal)
 
         def __init__(self, **kwargs):
                 self.username = kwargs.get('username')
@@ -19,6 +19,9 @@ class Player():
                 self.yearofstudy = kwargs.get('yearofstudy')
                 self.genderpref = kwargs.get('genderpref')
                 self.faculty = kwargs.get('faculty')
+                self.interests = kwargs.get('interests')
+                self.twotruthsonelie = kwargs.get('twotruthsonelie')
+                self.messageformortal = kwargs.get('messageformortal')
 
         def __repr__(self):
                 return str(self.username)

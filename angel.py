@@ -66,7 +66,6 @@ def read_csv(filename):
                 print(f'Column names are {", ".join(row)}')
                 line_count += 1
             else:
-
                 playerUsername=row[0].strip().lower()
                 playerName=row[1].strip().lower()
                 houseNumber=row[2].strip().lower()
@@ -75,6 +74,9 @@ def read_csv(filename):
                 yearofStudy=row[5].strip().lower()
                 genderPref=row[6].strip().lower()
                 faculty=row[7].strip().lower()
+                interests = row[8].strip().lower()
+                twotruthsonelie = row[9].strip().lower()
+                messageformortal= row[10].strip().lower()
 
                 new_person = Player(username = playerUsername,
                     playername = playerName,
@@ -83,7 +85,11 @@ def read_csv(filename):
                     genderplayer = genderPlayer,
                     yearofstudy = yearofStudy,
                     genderpref = genderPref,
-                    faculty = faculty)
+                    faculty = faculty,
+                    interests = interests,
+                    twotruthsonelie = twotruthsonelie,
+                    messageformortal = messageformortal,
+                    )
                 person_list.append(new_person)
                 logger.info(f'Adding ' + str(new_person))
                 print(f'Adding ' + str(new_person))
@@ -101,6 +107,8 @@ def separate_players(player_list):
     '''
     Separates the list of player list into male_male, male_female, and
     female_female gender preference lists
+
+    CURRENTLY USELESS FUNCTION
     '''
     male_male_list = []
     male_female_list = []
