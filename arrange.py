@@ -17,7 +17,7 @@ logging.basicConfig(
 import networkx as nx
 import time
 import random
-from random import shuffle
+# from random import shuffle
 from random import randint
 
 # Constants
@@ -197,14 +197,16 @@ def angel_mortal_arrange(player_list):
         full_cycle = hamilton(G) #get_one_full_cycle_from_graph(G)
         #full_cycle = get_hamiltonian_path_from_graph(G)
         # Draw the full cycle if it exists
-        if full_cycle is not None and (G.number_of_nodes() > (0.8 * len(player_list))): #do not accept if number of nodes is < 80% of participants
+        if full_cycle is not None and (G.number_of_nodes() > (0.8 * len(player_list))): #do not print CSV if number of nodes is < 80% of participants
             G_with_full_cycle = convert_full_cycle_to_graph(full_cycle)
             draw_graph(G_with_full_cycle)
             list_of_player_chains.append(full_cycle)
             # find out which nodes were missing
-            logger.info(f"{list(G.nodes())}")
-            print(f"Found a full cycle!")
+            players_not_in_csv = set(player_list)-set(list(G.nodes()))
+            logger.info(f"CSV has been printed. However, the following players {players_not_in_csv} are not inside. Please match them manually.")
+            print(f"Found a full cycle! CSV is printed. However, the following players {players_not_in_csv} are not inside. Please match them manually.")
         else:
-            print (f"There is no full cycle - sorry! This means that the current set of players cannot form a perfect chain given the arrange requirements")
+            print (f"There is no full cycle - sorry! This means that the current set of players cannot form a perfect chain given the arrange requirements. No CSV printed.")
+            logger.info(f"CSV not printed - no full cycle found")
 
     return list_of_player_chains
