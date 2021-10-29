@@ -21,7 +21,7 @@ class Player():
                 self.faculty = kwargs.get('faculty')
                 self.interests = kwargs.get('interests')
                 self.twotruthsonelie = kwargs.get('twotruthsonelie')
-                self.messageformortal = kwargs.get('messageformortal')
+                self.introduceyourself = kwargs.get('introduceyourself')
 
         def __repr__(self):
                 return str(self.username)
