@@ -14,7 +14,7 @@ Angels & Mortals algorithm uses a Hamiltonian-cycle based approach to finding va
 1. Clone the repo
 2. Create a virtual environment so that the required libraries don't pollute your namespace (Optional). Run `virtualenv venv` in the cloned directory.
 3. Install requirements with `pip install -r requirements.txt`
-4. Put a header-less tsv file (no column names, the first row is the first row of data already) with all details of participants in correct order in a file called `playerlist.tsv` in the main folder.
+4. Put a csv file with headers (see below for the header names; the first row will not be processed) with all details of participants in correct order in a file called `playerlist.csv` in the main folder.
 5. Run `python angel.py`
 
 
