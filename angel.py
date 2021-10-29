@@ -68,27 +68,27 @@ def read_csv(filename):
             else:
                 playerUsername=row[0].strip().lower()
                 playerName=row[1].strip().lower()
-                houseNumber=row[2].strip().lower()
-                CGnumber=row[3].strip().lower()
-                genderPlayer=row[4].strip().lower()
-                yearofStudy=row[5].strip().lower()
-                genderPref=row[6].strip().lower()
+                genderPlayer=row[2].strip().lower()
+                genderPref = row[3].strip().lower()
+                houseNumber=row[4].strip().lower()
+                CGnumber=row[5].strip().lower()
+                yearofStudy=row[6].strip().lower()
                 faculty=row[7].strip().lower()
                 interests = row[8].strip().lower()
                 twotruthsonelie = row[9].strip().lower()
-                messageformortal= row[10].strip().lower()
+                introduceyourself= row[10].strip().lower()
 
                 new_person = Player(username = playerUsername,
                     playername = playerName,
+                    genderplayer=genderPlayer,
+                    genderpref=genderPref,
                     housenumber = houseNumber,
                     cgnumber = CGnumber,
-                    genderplayer = genderPlayer,
                     yearofstudy = yearofStudy,
-                    genderpref = genderPref,
                     faculty = faculty,
                     interests = interests,
                     twotruthsonelie = twotruthsonelie,
-                    messageformortal = messageformortal,
+                    introduceyourself = introduceyourself,
                     )
                 person_list.append(new_person)
                 logger.info(f'Adding ' + str(new_person))
