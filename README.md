@@ -26,8 +26,8 @@ The columns in playerlist.csv should be arranged as such, with 1 being the leftm
 2. Name
 3. Gender
 4. Gender Preference (for Angel & Mortal)
-5. House Number
-6. CG Number
+5. House Number (in Medicine & Nursing faculty)
+6. CG Number (in Medicine & Nursing faculty)
 7. Year of Study
 8. Faculty
 9. Interests
