@@ -56,5 +56,5 @@ Players will be arranged such that for each player row in the output .csv file, 
 
 
 ### If you're looking for the Angels & Mortals Telegram Bot
-Please see my other repository here:\
+Please see my other Python repository here:\
 https://github.com/yeozhenhao/Angels_Mortals_bot
