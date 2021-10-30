@@ -57,9 +57,9 @@ def read_csv(filename):
     print(df_new)
     df_new['Angel'].iloc[[0]]=df_new['Angel'].iloc[[-1]]
     print(df_new)
-    df_new.drop(df.index[-1], inplace=True) ## removing the last row
-    print(df_new)
-    return df_new
+    df_new2 = df_new.iloc[:-1,:] ## removing the last row
+    print(df_new2)
+    return df_new2
 
 
 def write_to_csv(player_df):
@@ -69,8 +69,8 @@ def write_to_csv(player_df):
         with open(f"Final Player List - {cur_time}.csv", 'w') as f:
             player_df.to_csv(f, encoding='utf-8', header= True, index = False, line_terminator='\n')
             f.close()
-    else
-    print (f"ERROR: player_df is None")
+    else:
+        print (f"ERROR: player_df is None")
 
 if __name__ == "__main__":
     print (f"\n\n")
