@@ -31,9 +31,9 @@ DISPLAY_GRAPH = True
 
 # Changing this value changes how much we care about the houses of players being the same
 # If 1 - we don't care, and house de-conflicting is ignored. 0 means we won't allow any players of the same house to be matched.
-RELAX_GENDERPREF_REQUIREMENT_PERCENTAGE = 0.30
+RELAX_GENDERPREF_REQUIREMENT_PERCENTAGE = 0.35
 
-RELAX_NO_SAME_HOUSE_REQUIREMENT_PERCENTAGE = 0.30
+RELAX_NO_SAME_HOUSE_REQUIREMENT_PERCENTAGE = 0.35
 
 RELAX_NO_SAME_CG_REQUIREMENT_PERCENTAGE = 0.00
 

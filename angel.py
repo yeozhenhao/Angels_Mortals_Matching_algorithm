@@ -169,7 +169,10 @@ def write_to_csv(index, *player_lists):
         if player_list is not None:
             print (f"Length of list: {len(player_list)}")
             cur_time = time.strftime("%Y-%m-%d %H-%M-%S")
-            with open(f"{index} - {cur_time}.csv", 'w') as f:
+            with open(f"{index} - {cur_time}.csv", 'w', newline='') as f: ##In Python 3, if do not put newline='' AND choose 'w' instead of 'wb', you will have an empty 2nd row in output .csv file.
+                writer = csv.writer(f, delimiter=',')
+                header = ['Telegram Username','Name','Gender','GenderPref','House','CG','Year','Faculty','Interests','Twotruthsonelie','Introduction'] ##add header to output csv file
+                writer.writerow(i for i in header)
                 for player in player_list:
                     f.write(player.to_csv_row())
                     f.write("\n")
