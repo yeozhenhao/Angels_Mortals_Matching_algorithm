@@ -8,7 +8,7 @@ Please check out his website if you want to learn how it works in Angels & Morta
 ## What I changed
 - changes of player's preferences for NUS Medicine & Nursing faculty (e.g. CG number, House number)
 ####
-- an important one-line replacement of a deprecated `networkx` command in arrange.py so the algorithm works with the latest `networkx==2.6.3`.
+- an important one-line replacement of a deprecated `networkx` command in **arrange.py** so the algorithm works with the latest `networkx==2.6.3`.
 ####
 - **NEW .csv output functions:**\
 1: Output .csv only prints when matching algorithm successfully matches >80% of players in the inital .csv input file.\
