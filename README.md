@@ -36,20 +36,20 @@ The matching for Angels & Mortals can be done with a Hamiltonian-cycle based app
 ### Columns required for playerlist.csv
 First, playerlist.csv should have a header row with all the column names.
 
-The columns in playerlist.csv should be arranged as such, with 1 being the leftmost column. Important columns for matching: Gender, Gender preference, House number, CG number 
+The columns in playerlist.csv should be arranged as such, with 1 being the leftmost column. Important columns for matching: Gender preference, Gender, House number, CG number.
 
 
 1. Telegram Username
 2. Name
-3. Gender
-4. Gender Preference (for Angel & Mortal)
-5. House Number (in Medicine & Nursing faculty)
-6. CG Number (in Medicine & Nursing faculty)
-7. Year of Study
-8. Faculty
-9. Interests
-10. Two truths one lie
-11. Self-introduction (for Mortal only)
+3. Gender Preference (for Angel & Mortal)
+4. Gender
+5. Interests 
+6. Two truths one lie
+7. Self-introduction (for Mortal only)
+8. House Number (in Medicine & Nursing faculty)
+9. CG Number (in Medicine & Nursing faculty)
+10. Year of Study
+11. Faculty
 
 **Output CSV** will have the same columns but no header.\
 Players will be arranged such that for each player row in the output .csv file, his/her Angel is in the row above and his/her Mortal is in the row below.

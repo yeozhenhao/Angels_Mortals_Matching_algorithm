@@ -68,27 +68,27 @@ def read_csv(filename):
             else:
                 playerUsername=row[0].strip().lower()
                 playerName=row[1].strip().lower()
-                genderPlayer=row[2].strip().lower()
-                genderPref = row[3].strip().lower()
-                houseNumber=row[4].strip().lower()
-                CGnumber=row[5].strip().lower()
-                yearofStudy=row[6].strip().lower()
-                faculty=row[7].strip().lower()
-                interests = row[8].strip().lower()
-                twotruthsonelie = row[9].strip().lower()
-                introduction= row[10].strip().lower()
+                genderPref = row[2].strip().lower()
+                genderPlayer = row[3].strip().lower()
+                interests = row[4].strip().lower()
+                twotruthsonelie = row[5].strip().lower()
+                introduction = row[6].strip().lower()
+                houseNumber = row[7].strip().lower()
+                CGnumber = row[8].strip().lower()
+                yearofStudy = row[9].strip().lower()
+                faculty = row[10].strip().lower()
 
                 new_person = Player(username = playerUsername,
                     playername = playerName,
-                    genderplayer=genderPlayer,
                     genderpref=genderPref,
+                    genderplayer=genderPlayer,
+                    interests=interests,
+                    twotruthsonelie=twotruthsonelie,
+                    introduction=introduction,
                     housenumber = houseNumber,
                     cgnumber = CGnumber,
                     yearofstudy = yearofStudy,
                     faculty = faculty,
-                    interests = interests,
-                    twotruthsonelie = twotruthsonelie,
-                    introduction = introduction,
                     )
                 person_list.append(new_person)
                 logger.info(f'Adding ' + str(new_person))
@@ -171,7 +171,7 @@ def write_to_csv(index, *player_lists):
             cur_time = time.strftime("%Y-%m-%d %H-%M-%S")
             with open(f"{index} - {cur_time}.csv", 'w', newline='') as f: ##In Python 3, if do not put newline='' AND choose 'w' instead of 'wb', you will have an empty 2nd row in output .csv file.
                 writer = csv.writer(f, delimiter=',')
-                header = ['Telegram Username','Name','Gender','GenderPref','House','CG','Year','Faculty','Interests','Twotruthsonelie','Introduction'] ##add header to output csv file
+                header = ['Telegram Username','Name','GenderPref','Gender','Interests','2truths1lie','Intro','House','CG','Year','Faculty'] ##add header to output csv file
                 writer.writerow(i for i in header)
                 for player in player_list:
                     f.write(player.to_csv_row())
