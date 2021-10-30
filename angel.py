@@ -76,7 +76,7 @@ def read_csv(filename):
                 faculty=row[7].strip().lower()
                 interests = row[8].strip().lower()
                 twotruthsonelie = row[9].strip().lower()
-                introduceyourself= row[10].strip().lower()
+                introduction= row[10].strip().lower()
 
                 new_person = Player(username = playerUsername,
                     playername = playerName,
@@ -88,7 +88,7 @@ def read_csv(filename):
                     faculty = faculty,
                     interests = interests,
                     twotruthsonelie = twotruthsonelie,
-                    introduceyourself = introduceyourself,
+                    introduction = introduction,
                     )
                 person_list.append(new_person)
                 logger.info(f'Adding ' + str(new_person))
