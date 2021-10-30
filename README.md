@@ -52,4 +52,9 @@ The columns in playerlist.csv should be arranged as such, with 1 being the leftm
 11. Self-introduction (for Mortal only)
 
 **Output CSV** will have the same columns but no header.\
-Players will be arranged such that for each player row in the output .csv file, his/her Angel is in the row above and his/her Mortal is in the row below. 
+Players will be arranged such that for each player row in the output .csv file, his/her Angel is in the row above and his/her Mortal is in the row below.
+
+
+### If you're looking for the Angels & Mortals Telegram Bot
+Please see my other repository here:\
+https://github.com/yeozhenhao/Angels_Mortals_bot
