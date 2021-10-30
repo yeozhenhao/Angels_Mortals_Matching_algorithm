@@ -54,6 +54,8 @@ The columns in playerlist.csv should be arranged as such, with 1 being the leftm
 **Output CSV** will have the same columns but no header.\
 Players will be arranged such that for each player row in the output .csv file, his/her Angel is in the row above and his/her Mortal is in the row below.
 
+### All files are important except transpose_for_bot.py
+transpose_for_bot.py is just a script I created to arrange the player names in a .csv file easily so they can be used as input for my other Python Telegram Dual Bots for Angels & Mortals. You may choose to ignore it.
 
 ### If you're looking for the Angels & Mortals Telegram Bot
 Please see my other Python repository here:\
