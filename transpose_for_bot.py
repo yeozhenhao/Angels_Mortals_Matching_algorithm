@@ -20,12 +20,16 @@ class tempPlayer():
         return ",".join(args)
 
     def to_csv_row(self):
-        return self.separate_args_with_commas(self.username, self.angelusername, self.mortalusername)
+        return self.separate_args_with_commas(self.username, self.angelusername, self.mortalusername, self.genderplayer, self.interests, self.twotruthsonelie, self.introduction)
 
     def __init__(self, **kwargs):
         self.username = kwargs.get('username')
         self.angelusername = kwargs.get('angelusername')
         self.mortalusername = kwargs.get('mortalusername')
+        self.genderplayer = kwargs.get('genderplayer')
+        self.interests = kwargs.get('interests')
+        self.twotruthsonelie = kwargs.get('twotruthsonelie')
+        self.introduction = kwargs.get('introduction')
 
 
 # GLOBALS: change to name of final players csv you want to use
@@ -35,44 +39,38 @@ class tempPlayer():
 #   3: Then, delete the columns / ignore the values from Column 4 onwards
 #   4: Delete the last row, and then in the new last row, fill in the last empty blank (should be on the 3rd column)
 #   5: The generated csv template can be used in Elgene's Angels Mortals Bot
-FINALPLAYERSFILE = "test.csv"
+FINALPLAYERSFILE = "1.csv"
 
+import pandas as pd
 def read_csv(filename):
-    person_list = []
-    with open(filename, 'r') as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        line_count = 0
-        for row in csv_reader:
-                playerAngel=row[0].strip().lower()
-                playerUsername=row[1].strip().lower()
-                playerMortal=row[2].strip().lower()
+    df = pd.read_csv(filename)
+    print(df)
+    df_new = df.rename(columns={'Telegram Username':'Player', 'Name': 'Angel', 'GenderPref': 'Mortal'})
+    print(df_new)
+    for i, row in df_new.iterrows():
+        # print(i)
+        df_new.at[i, 'Mortal'] = df_new.at[i, 'Player']
+        df_new.at[i, 'Angel'] = df_new.at[i, 'Player']
+    print (df_new)
+    df_new.loc[:, 'Mortal'] = df_new.Mortal.shift(-1)
+    df_new.loc[:, 'Angel'] = df_new.Angel.shift(1)
+    print(df_new)
+    df_new['Angel'].iloc[[0]]=df_new['Angel'].iloc[[-1]]
+    print(df_new)
+    df_new.drop(df.index[-1], inplace=True) ## removing the last row
+    print(df_new)
+    return df_new
 
-                new_person = tempPlayer(username = playerUsername,
-                    mortalusername = playerMortal,
-                    angelusername = playerAngel)
-                person_list.append(new_person)
-                logger.info(f'Adding ' + str(new_person))
-                print(f'Adding ' + str(new_person))
-                line_count += 1
-        print (f'Processed {line_count} lines.')
-        logger.info(f'Processed {line_count} lines.')
-        logger.info(f'person_list has been processed successfully')
-    return person_list
 
-def write_to_csv(player_list):
-    '''
-    Writes a variable number of player lists to csv
-    '''
-    if player_list is not None:
-        print (f"Length of list: {len(player_list)}")
+def write_to_csv(player_df):
+    if player_df is not None:
+        print (f"Length of list: {len(player_df)}")
         cur_time = time.strftime("%Y-%m-%d %H-%M-%S")
         with open(f"Final Player List - {cur_time}.csv", 'w') as f:
-            f.write(f"Player, Mortal, Angel")
-            f.write("\n")
-            for player in player_list:
-                f.write(player.to_csv_row())
-                f.write("\n")
+            player_df.to_csv(f, encoding='utf-8', header= True, index = False, line_terminator='\n')
             f.close()
+    else
+    print (f"ERROR: player_df is None")
 
 if __name__ == "__main__":
     print (f"\n\n")
@@ -82,6 +80,6 @@ if __name__ == "__main__":
     print (f"\n\n")
 
     # Get list of Player objects from csv file
-    player_list = read_csv(FINALPLAYERSFILE)
-    write_to_csv(player_list)
+    player_df = read_csv(FINALPLAYERSFILE)
+    write_to_csv(player_df)
 
