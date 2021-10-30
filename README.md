@@ -24,12 +24,14 @@ The columns in playerlist.csv should be arranged as such, with 1 being the leftm
 
 1. Telegram Username
 2. Name
-3. House Number
-4. CG Number
-5. Gender
-6. Year of Study
-7. Gender Preference (for Angel & Mortal)
+3. Gender
+4. Gender Preference (for Angel & Mortal)
+5. House Number
+6. CG Number
+7. Year of Study
 8. Faculty
 9. Interests
 10. Two truths one lie
-11. Message for your mortal
+11. Self-introduction (for Mortal only)
+
+Output CSV will be the same
