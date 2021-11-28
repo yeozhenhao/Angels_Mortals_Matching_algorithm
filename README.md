@@ -33,7 +33,7 @@ you should close again but the bot should export out a *"0 - xxxxxxxxx"* .csv fi
 ***End of a angel.py script that has successfully matched >80% of players in the input playerlist.csv***\
 After no more pop-up windows are shown & angel.py script has terminated, the terminal 
 should ideally indicate to you that CSV is printed, and also tell you the list of players (technically a *Python dictionary*) 
-that were not matched and thus not in the *"0 - xxxxxxxxx"* .csv output file. You will need to match them manually.\
+that were not matched and thus not in the *"0 - xxxxxxxxx"* .csv output file. You will need to match them manually.
 ####
 *Note: the *"0 - xxxxxxxxx"* .csv output file will not be created if the **angel.py** script is unable to match >80% of players in the input playerlist.csv.*
 ####
