@@ -10,8 +10,6 @@ Please check out his website if you want to learn how it works in Angels & Morta
 ####
 - an important one-line replacement of a deprecated `networkx` command in **arrange.py** so the algorithm works with the latest `networkx==2.6.3`.
 ####
-- Automatic transposing of output .csv data with **transpose_for_bot.py**
-####
 - **NEW .csv output functions:**\
 1: Output .csv only prints when matching algorithm successfully matches >80% of players in the inital .csv input file.\
 2: Also, log file will record a list of Telegram usernames which failed to get a match and are thus not included in the CSV output. They will need to be matched manually.
@@ -22,11 +20,19 @@ Please check out his website if you want to learn how it works in Angels & Morta
 3: Added logging for various functions for easier readability & debugging\
 4: New requirements.txt file with the latest versions of required python modules (tested working as of October 2021)
 
+## What I added
+- **transpose_for_bot.py** script to easily transpose the output .csv data, so they can be easily loaded into my [Angel and Mortals Dual Telegram Bots](https://github.com/yeozhenhao/Angels_Mortals_bot) to start an Angels and Mortals game.\
+Running **transpose_for_bot.py** will re-export the output .csv file with the assigned Angels & Mortals for each player, and then the new .csv can be used as input for my other Python app ***[Telegram Dual Bots for Angels & Mortals](https://github.com/yeozhenhao/Angels_Mortals_bot)***.\
+*Note: This file is not necessary in the running of the Matching algorithm.*
+#### How to use transpose_for_bot.py
+1. Rename output .csv from Matching algorithm as **"1.csv"**, and leave it in the root folder.
+2. Run **transpose_for_bot.py**, and a new "Final Player List.csv" should be created with the assigned Angels & Mortals for each player.
+
 ### Overview
 The matching for Angels & Mortals can be done with a Hamiltonian-cycle based approach to finding valid angel-mortal chains based on player's preferences.\
 `networkx` was used for the Hamilton algorithm.
 
-### How to use
+### How to use the Matching Algorithm
 1. Clone the repo
 2. Create a virtual environment so that the required libraries don't pollute your namespace (Optional). Run `virtualenv venv` in the cloned directory.
 3. Install requirements with `pip install -r requirements.txt`
@@ -55,17 +61,6 @@ The columns in playerlist.csv should be arranged as such, with 1 being the leftm
 
 **Output CSV** will have the same columns but no header.\
 Players will be arranged such that for each player row in the output .csv file, his/her Angel is in the row above and his/her Mortal is in the row below.
-
-### Automatically transpose with transpose_for_bot.py
-**transpose_for_bot.py** is a script I created to help transpose the orignal output .csv from the Angels & Mortals Matching algorithm.
-
-Running **transpose_for_bot.py** will re-export the output .csv file with assigned Angels & Mortals for each player, so the .csv can be used directly as input for my other Python app ***"Telegram Dual Bots for Angels & Mortals"***.
-
-This file is not necessary in the running of the Matching algorithm.
-
-#### How to use it
-1. Rename output .csv from Matching algorithm as **"1.csv"**, and leave it in the root folder.
-2. Run **transpose_for_bot.py**, and a new "Final Player List.csv" should be created with the assigned Angels & Mortals for each player.
 
 ### If you're looking for the Angels & Mortals Telegram Bot
 Please see my other Python repository here:\
