@@ -1,4 +1,76 @@
 # Angels & Mortals Matching algorithm for NUS Medicine & Nursing
+## Bot functions (in photos)
+*I believe that a picture paints a thousand words - yeozhenhao*
+####
+![](botPics/matchinput.png)\
+***Start with a playerlist.csv collected through a form***
+####
+![angel.py script finds multiple ways to interconnect players based on matching criteria](botPics/match1.png)\
+***angel.py script finds multiple ways to interconnect players based on matching criteria***\
+After running angel.py in an IDE like PyCharm, 
+the terminal should print something, and a window will 
+pop up once every second. But all you need to do is to 
+keep closing the window until one of the windows show 
+lots of nodes with arrows interconnecting them. 
+This means the Matching script has managed to found multiple
+possible ways to match them (after taking into account their
+gender preferences, & ensuring the Clinical Group & House numbers
+are not the same). For more information on matching criteria,
+you may read below.\
+You should close this window again, and the next pop-up window should
+show you the proper matches.
+####
+![](botPics/match2.png)\
+***After closing some windows, you should ideally see a pop-up window showing nodes connected altogether in a one-way loop by arrows***\
+Again, keep closing the pop-up window until you see that many nodes are
+connected to each other by a one-way arrow. This means the script has
+successfully managed to find all the nodes (that were shown in the pop-up window)
+a Mortal & an Angel.\
+You should close this window again, and there will be a couple more pop-up windows which
+you should close again but the bot should export out a *"0 - xxxxxxxxx"* .csv file soon. 
+####
+![](botPics/match3.png)\
+***End of a angel.py script that has successfully matched >80% of players in the input playerlist.csv***\
+After no more pop-up windows are shown & angel.py script has terminated, the terminal 
+should ideally indicate to you that CSV is printed, and also tell you the list of players (technically a *Python dictionary*) 
+that were not matched and thus not in the *"0 - xxxxxxxxx"* .csv output file. You will need to match them manually.\
+####
+*Note: the *"0 - xxxxxxxxx"* .csv output file will not be created if the **angel.py** script is unable to match >80% of players in the input playerlist.csv.*
+####
+![](botPics/matchoutput.png)\
+***"0 - xxxxxxxxx" .csv output file from a successful matching by angel.py script***\
+For each row (player) in the .csv file, the Angel is the player row above, and the Mortal is the player row below.\
+Essentially, Angels & Mortals is a game where the matching can form a closed one-way loop.
+####
+![](botPics/transpose1.png)\
+***Initial terminal output after running transpose_for_bot.py***\
+First, rename the *0 - xxxxxxxxx.csv* into **1.csv**\
+Then, simply run *transpose_for_bot.py*.\
+The terminal should initially print a *pandas dataframe* of the 1.csv file.
+This dataframe will be manipulated to get the final output.
+
+####
+![](botPics/transpose2.png)\
+***2nd terminal output after 1st manipulation of dataframe***\
+Column names of Column 2 & 3 are changed to *"Angel"* & *"Mortal"* respectively as printed on the terminal.\
+Also, data of Column 1 is copied onto Columns 2 & 3.
+####
+![](botPics/transpose3.png)\
+***3rd terminal output after 2nd manipulation of dataframe***\
+Data in Column 2 is shifted down by 1 row\
+Data in Column 3 is shifted up by 1 row\
+We will deal with NaN values next.
+####
+![](botPics/transpose4.png)\
+***Final terminal output after last manipulation of dataframe***\
+NaN value in Column 2 is replaced with the last row data in Column 1\
+NaN value in Column 3 is replaced with the first row data in Column 1\
+####
+![](botPics/transposeoutput.png)\
+***Final Players List.csv after transposing of data with transpose_for_bot.py script***
+This Final Players List.csv can be directly used into [yeozhenhao's Angels & Mortals Dual Bots](https://github.com/yeozhenhao/Angels_Mortals_bot)
+to start playing an Angels & Mortals game on Telegram!
+####
 
 ## Accreditation
 Special thanks to **Sriram Sami** for his idea of using Hamilton algorithm with the `networkx` python module.
@@ -37,7 +109,7 @@ The matching for Angels & Mortals can be done with a Hamiltonian-cycle based app
 - ensures matches are NOT from the same Clinical Group (CG)
 - ensures matches are NOT from the same House\
 *Note: The % leniency in matching for the above criteria can be set in **arrange.py***
-- only if >80% of the entire player base has a suitable match, then a Final Players List .csv output will be generated
+- only if >80% of the entire player base has a suitable match, then a "Final Players List" .csv output will be generated
 
 ### How to use the Matching Algorithm
 1. Clone the repo
@@ -72,9 +144,3 @@ Players will be arranged such that for each player row in the output .csv file, 
 ### If you're looking for an Angels & Mortals Telegram Bot
 You may check out my other Python repository here:\
 https://github.com/yeozhenhao/Angels_Mortals_bot
-
-## Bot functions (in photos)
-*I believe that a picture paints a thousand words - yeozhenhao*
-####
-![Starting the bot & starting your message with @clinicals](botPics/startbot.png)\
-***Starting the bot & starting your message with @clinicals***\
