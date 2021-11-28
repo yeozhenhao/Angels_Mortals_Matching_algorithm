@@ -1,5 +1,5 @@
 # Angels & Mortals Matching algorithm for NUS Medicine & Nursing
-## Bot functions (in photos)
+## Transpose script & Matching script functions (in photos)
 *I believe that a picture paints a thousand words - yeozhenhao*
 ####
 ![](botPics/matchinput.png)\
