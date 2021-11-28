@@ -32,6 +32,13 @@ Running **transpose_for_bot.py** will re-export the output .csv file with the as
 The matching for Angels & Mortals can be done with a Hamiltonian-cycle based approach to finding valid angel-mortal chains based on player's preferences.\
 `networkx` was used for the Hamilton algorithm.
 
+#### TLDR: How matching is done
+- ensures have their gender preferences satisfied
+- ensures matches are NOT from the same Clinical Group (CG)
+- ensures matches are NOT from the same House\
+*Note: The % leniency in matching for the above criteria can be set in **arrange.py***
+- only if >80% of the entire player base has a suitable match, then a Final Players List .csv output will be generated
+
 ### How to use the Matching Algorithm
 1. Clone the repo
 2. Create a virtual environment so that the required libraries don't pollute your namespace (Optional). Run `virtualenv venv` in the cloned directory.
@@ -62,6 +69,6 @@ The columns in playerlist.csv should be arranged as such, with 1 being the leftm
 **Output CSV** will have the same columns but no header.\
 Players will be arranged such that for each player row in the output .csv file, his/her Angel is in the row above and his/her Mortal is in the row below.
 
-### If you're looking for the Angels & Mortals Telegram Bot
-Please see my other Python repository here:\
+### If you're looking for an Angels & Mortals Telegram Bot
+You may check out my other Python repository here:\
 https://github.com/yeozhenhao/Angels_Mortals_bot
