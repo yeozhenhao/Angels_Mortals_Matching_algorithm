@@ -72,3 +72,9 @@ Players will be arranged such that for each player row in the output .csv file, 
 ### If you're looking for an Angels & Mortals Telegram Bot
 You may check out my other Python repository here:\
 https://github.com/yeozhenhao/Angels_Mortals_bot
+
+## Bot functions (in photos)
+*I believe that a picture paints a thousand words - yeozhenhao*
+####
+![Starting the bot & starting your message with @clinicals](botPics/startbot.png)\
+***Starting the bot & starting your message with @clinicals***\

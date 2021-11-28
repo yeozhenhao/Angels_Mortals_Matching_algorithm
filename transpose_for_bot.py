@@ -38,7 +38,7 @@ class tempPlayer():
 #   2: Delete the first column
 #   3: Then, delete the columns / ignore the values from Column 4 onwards
 #   4: Delete the last row, and then in the new last row, fill in the last empty blank (should be on the 3rd column)
-#   5: The generated csv template can be used in Elgene's Angels Mortals Bot
+#   5: The generated csv template can be used in yeozhenhao's Angels Mortals Bot
 FINALPLAYERSFILE = "1.csv"
 
 import pandas as pd
@@ -75,7 +75,7 @@ def write_to_csv(player_df):
 if __name__ == "__main__":
     print (f"\n\n")
     print (f"=============================================")
-    print (f"Elgene's Angel-Mortal csv generator initializing..............")
+    print (f"yeozhenhao's Angel-Mortal csv generator initializing..............")
     print (f"=============================================")
     print (f"\n\n")
 
