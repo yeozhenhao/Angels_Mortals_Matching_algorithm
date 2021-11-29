@@ -100,18 +100,18 @@ Running **transpose_for_bot.py** will re-export the output .csv file with the as
 1. Rename output .csv from Matching algorithm as **"1.csv"**, and leave it in the root folder.
 2. Run **transpose_for_bot.py**, and a new "Final Player List.csv" should be created with the assigned Angels & Mortals for each player.
 
-### Overview
+## Overview
 The matching for Angels & Mortals can be done with a Hamiltonian-cycle based approach to finding valid angel-mortal chains based on player's preferences.\
 `networkx` was used for the Hamilton algorithm.
 
-#### TLDR: How matching is done
+### TLDR: How matching is done
 - ensures have their gender preferences satisfied
 - ensures matches are NOT from the same Clinical Group (CG)
 - ensures matches are NOT from the same House\
 *Note: The % leniency in matching for the above criteria can be set in **arrange.py***
 - only if >80% of the entire player base has a suitable match, then a "Final Players List" .csv output will be generated
 
-### How to use the Matching Algorithm
+## How to use the Matching Algorithm
 1. Clone the repo
 2. Create a virtual environment so that the required libraries don't pollute your namespace (Optional). Run `virtualenv venv` in the cloned directory.
 3. Install requirements with `pip install -r requirements.txt`
@@ -120,7 +120,7 @@ The matching for Angels & Mortals can be done with a Hamiltonian-cycle based app
 6. Output will be a .csv file with naming format based on time & date at runtime
 
 
-### Columns required for playerlist.csv
+## Columns required for playerlist.csv
 First, playerlist.csv should have a header row with all the column names.
 
 The columns in playerlist.csv should be arranged as such, with 1 being the leftmost column. Important columns for matching: Gender preference, Gender, House number, CG number.
@@ -141,5 +141,5 @@ The columns in playerlist.csv should be arranged as such, with 1 being the leftm
 **Output CSV** will have the same columns but no header.\
 Players will be arranged such that for each player row in the output .csv file, his/her Angel is in the row above and his/her Mortal is in the row below.
 
-### If you're looking for an Angels & Mortals Telegram Bot
+## If you're looking for an Angels & Mortals Telegram Bot
 You may check out my other Python repository: [Angel and Mortals Dual Telegram Bots](https://github.com/yeozhenhao/Angels_Mortals_bot)
