@@ -108,7 +108,7 @@ The matching for Angels & Mortals can be done with a Hamiltonian-cycle based app
 - ensures have their gender preferences satisfied
 - ensures matches are NOT from the same Clinical Group (CG)
 - ensures matches are NOT from the same House\
-*Note: The % leniency in matching for the above criteria can be set in **arrange.py***
+*Note: The % leniency in matching for the aforementioned criteria can be set in **arrange.py***
 - only if >80% of the entire player base has a suitable match, then a "Final Players List" .csv output will be generated
 
 ## How to use the Matching Algorithm
