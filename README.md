@@ -142,5 +142,4 @@ The columns in playerlist.csv should be arranged as such, with 1 being the leftm
 Players will be arranged such that for each player row in the output .csv file, his/her Angel is in the row above and his/her Mortal is in the row below.
 
 ### If you're looking for an Angels & Mortals Telegram Bot
-You may check out my other Python repository here:\
-https://github.com/yeozhenhao/Angels_Mortals_bot
+You may check out my other Python repository: [Angel and Mortals Dual Telegram Bots](https://github.com/yeozhenhao/Angels_Mortals_bot)
