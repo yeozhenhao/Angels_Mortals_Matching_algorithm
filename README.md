@@ -7,7 +7,7 @@
 ####
 ![angel.py script finds multiple ways to interconnect players based on matching criteria](botPics/match1.png)\
 ***angel.py script finds multiple ways to interconnect players based on matching criteria***\
-After running angel.py in an IDE like PyCharm, 
+After running **angel.py** in an IDE like *PyCharm*, 
 the terminal should print something, and a window will 
 pop up once every second. But all you need to do is to 
 keep closing the window until one of the windows show 
