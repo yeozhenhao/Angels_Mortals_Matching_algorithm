@@ -57,14 +57,14 @@ Also, data of Column 1 is copied onto Columns 2 & 3.
 ####
 ![](botPics/transpose3.png)\
 ***3rd terminal output after 2nd manipulation of dataframe***\
-Data in Column 2 is shifted down by 1 row\
-Data in Column 3 is shifted up by 1 row\
+Data in Column 2 is shifted down by 1 row.\
+Data in Column 3 is shifted up by 1 row.\
 We will deal with NaN values next.
 ####
 ![](botPics/transpose4.png)\
 ***Final terminal output after last manipulation of dataframe***\
-NaN value in Column 2 is replaced with the last row data in Column 1\
-NaN value in Column 3 is replaced with the first row data in Column 1\
+NaN value in Column 2 is replaced with the last row data in Column 1.\
+NaN value in Column 3 is replaced with the first row data in Column 1.
 ####
 ![](botPics/transposeoutput.png)\
 ***Final Players List.csv after transposing of data with transpose_for_bot.py script***
