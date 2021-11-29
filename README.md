@@ -67,7 +67,7 @@ NaN value in Column 2 is replaced with the last row data in Column 1.\
 NaN value in Column 3 is replaced with the first row data in Column 1.
 ####
 ![](botPics/transposeoutput.png)\
-***Final Players List.csv after transposing of data with transpose_for_bot.py script***
+***Final Players List.csv after transposing of data with transpose_for_bot.py script***\
 This Final Players List.csv can be directly used into [yeozhenhao's Angels & Mortals Dual Bots](https://github.com/yeozhenhao/Angels_Mortals_bot)
 to start playing an Angels & Mortals game on Telegram!
 ####
