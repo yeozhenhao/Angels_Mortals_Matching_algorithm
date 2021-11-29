@@ -5,10 +5,6 @@
 ![](botPics/matchinput.png)\
 ***Start with a playerlist.csv. Presumably the data is collected through a form***
 ####
-####
-####
-####
-####
 ![angel.py script finds multiple ways to interconnect players based on matching criteria](botPics/match1.png)\
 ***angel.py script finds multiple ways to interconnect players based on matching criteria***\
 After running angel.py in an IDE like PyCharm, 
