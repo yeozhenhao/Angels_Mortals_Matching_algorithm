@@ -57,7 +57,7 @@ def read_csv(filename):
     print(df_new)
     df_new['Angel'].iloc[[0]]=df_new['Angel'].iloc[[-1]]
     print(df_new)
-    df_new['Mortal'].iloc[[-1]]=df_new['Angel'].iloc[[0]]
+    df_new['Mortal'].iloc[[-1]]=df_new['Mortal'].iloc[[0]]
     print(df_new)
     # df_new2 = df_new.iloc[:-1,:] ## removing the last row ###THESE FUNCTIONS ARE NOT IMPORTANT - they were made based on an incorrect playerlist template
     # print(df_new2)
