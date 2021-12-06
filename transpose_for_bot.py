@@ -49,8 +49,8 @@ def read_csv(filename):
     print(df_new)
     for i, row in df_new.iterrows():
         # print(i)
-        df_new.at[i, 'Mortal'] = df_new.at[i, 'Player']
-        df_new.at[i, 'Angel'] = df_new.at[i, 'Player']
+        df_new.loc[i, 'Mortal'] = df_new.loc[i, 'Player']  ### DO NOT USE .at || .at will convert the column data into a float/int, which is invalid with a string Telegram username. Use .loc instead!
+        df_new.loc[i, 'Angel'] = df_new.loc[i, 'Player']
     print (df_new)
     df_new.loc[:, 'Mortal'] = df_new.Mortal.shift(-1)
     df_new.loc[:, 'Angel'] = df_new.Angel.shift(1)
