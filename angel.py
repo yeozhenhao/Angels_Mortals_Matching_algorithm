@@ -203,4 +203,8 @@ if __name__ == "__main__":
         write_to_csv(index, "accepted", player_chain)
         # creating csv list of rejected players
         rejected_players_list = Difference_operator_lists(player_list, player_chain)
-        write_to_csv(index, "rejected", rejected_players_list)
+        if len(rejected_players_list) == 0:
+            print("rejected players list is empty")
+        else:
+            write_to_csv(index, "rejected", rejected_players_list)
+            print("rejected players list csv created")
