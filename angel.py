@@ -174,6 +174,20 @@ def write_to_csv(index, name01, *player_lists):
                 header = ['Telegram Username','Name','GenderPref','Gender','Interests','2truths1lie','Intro','House','CG','Year','Faculty'] ##add header to output csv file
                 writer.writerow(i for i in header)
                 for player in player_list:
+                    if '\n' in player.twotruthsonelie:
+                        string1 = player.twotruthsonelie
+                        string2 = ''.join(('"', string1, '"'))
+                        player.twotruthsonelie = string2
+
+                    if '\n' in player.interests:
+                        string11 = player.interests
+                        string12 = ''.join(('"', string11, '"'))
+                        player.interests = string12
+
+                    if '\n' in player.introduction:
+                        string21 = player.introduction
+                        string22 = ''.join(('"', string21, '"'))
+                        player.introduction = string22
                     f.write(player.to_csv_row())
                     f.write("\n")
             # # write the first player again to close the loop

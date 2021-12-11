@@ -197,7 +197,7 @@ def angel_mortal_arrange(player_list):
         full_cycle = hamilton(G) #get_one_full_cycle_from_graph(G)
         #full_cycle = get_hamiltonian_path_from_graph(G)
         # Draw the full cycle if it exists
-        if full_cycle is not None and (G.number_of_nodes() > (0.8 * len(player_list))): #do not print CSV if number of nodes is < 80% of participants
+        if full_cycle is not None and (G.number_of_nodes() >= (0.8 * len(player_list))): #do not print CSV if number of nodes is < 80% of participants
             G_with_full_cycle = convert_full_cycle_to_graph(full_cycle)
             draw_graph(G_with_full_cycle)
             list_of_player_chains.append(full_cycle)
