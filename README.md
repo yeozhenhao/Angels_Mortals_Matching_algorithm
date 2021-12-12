@@ -88,6 +88,7 @@ Please check out his website if you want to learn how it works in Angels & Morta
 3: For cells of the column "Two truths one lie", "Interests", and "Introduction", I have added manipulation of data to:
    - Remove double inverted commas (") as they can screw up the CSV output.
    - Enclose cell contents with newline using 2 double inverted commas (" ") so that newlines within the cell contents can be retained.\
+####
 4: Now outputs **2 CSVs** for each index (first one is always "0")
    - 1st CSV (named "**accepted** - 0 - xxxxxxxxx") will show all the accepted players
    - 2nd CSV (named "**rejected** - 0 - xxxxxxxxx") will show all the rejected players
