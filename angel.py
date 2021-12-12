@@ -176,18 +176,22 @@ def write_to_csv(index, name01, *player_lists):
                 for player in player_list:
                     if '\n' in player.twotruthsonelie:
                         string1 = player.twotruthsonelie
-                        string2 = ''.join(('"', string1, '"'))
-                        player.twotruthsonelie = string2
+                        string2 = string1.replace('"', "'")  ##JUST IN CASE PEOPLE TYPE " which can screw up a csv file
+                        string3 = ''.join(('"', string2,'"'))  ##Double quotations are what CSV uses to keep track of newlines within the same cell
+                        player.twotruthsonelie = string3
 
                     if '\n' in player.interests:
                         string11 = player.interests
-                        string12 = ''.join(('"', string11, '"'))
-                        player.interests = string12
+                        string12 = string11.replace('"', "")  ##JUST IN CASE PEOPLE TYPE " which can screw up a csv file
+                        string13 = ''.join(('"', string12,'"'))  ##Double quotations are what CSV uses to keep track of newlines within the same cell
+                        player.interests = string13
 
                     if '\n' in player.introduction:
                         string21 = player.introduction
-                        string22 = ''.join(('"', string21, '"'))
-                        player.introduction = string22
+                        string22 = string21.replace('"',"'")  ##JUST IN CASE PEOPLE TYPE " which can screw up a csv file
+                        string23 = ''.join(('"', string22,'"'))  ##Double quotations are what CSV uses to keep track of newlines within the same cell
+                        player.introduction = string23
+
                     f.write(player.to_csv_row())
                     f.write("\n")
             # # write the first player again to close the loop
@@ -195,7 +199,7 @@ def write_to_csv(index, name01, *player_lists):
             #     f.write("\n")
                 f.close()
 
-def Difference_operator_lists(li1, li2):                            ##Used to find out the rejected players
+def Difference_operator_lists(li1, li2):  ##Used to find out the rejected players
     return list(set(li1) - set(li2)) + list(set(li2) - set(li1))
 
 if __name__ == "__main__":
