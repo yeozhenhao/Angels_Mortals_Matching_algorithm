@@ -30,12 +30,12 @@ You should close this window again, and there will be a couple more pop-up windo
 you should close again but the bot should export out a *"0 - xxxxxxxxx"* .csv file soon. 
 ####
 ![](botPics/match3.png)\
-***End of a angel.py script that has successfully matched >80% of players in the input playerlist.csv***\
+***End of a angel.py script that has successfully matched **>{{MINIMUM_MATCHED_PLAYERS_BEFORE_CSVOUTPUT}}** (80% in this case) of players in the input playerlist.csv***\
 After no more pop-up windows are shown & angel.py script has terminated, the terminal 
 should ideally indicate to you that CSV is printed, and also tell you the list of players (technically a *Python dictionary*) 
 that were not matched and thus not in the *"0 - xxxxxxxxx"* .csv output file. You will need to match them manually.
 ####
-*Note: the *"0 - xxxxxxxxx"* .csv output file will not be created if the **angel.py** script is unable to match >80% of players in the input playerlist.csv.*
+*Note: the *"0 - xxxxxxxxx"* .csv output file will not be created if the **angel.py** script is unable to match **>{{MINIMUM_MATCHED_PLAYERS_BEFORE_CSVOUTPUT}}** (80% in this case) of players in the input playerlist.csv.*
 ####
 ![](botPics/matchoutput.png)\
 ***"0 - xxxxxxxxx" .csv output file from a successful matching by angel.py script***\
