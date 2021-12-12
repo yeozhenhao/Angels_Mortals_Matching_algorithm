@@ -84,13 +84,14 @@ Please check out his website if you want to learn how it works in Angels & Morta
 ####
 - **NEW .csv output functions:**\
 1: Output .csv only prints when matching algorithm successfully matches >80% of players in the inital .csv input file.\
-2: Also, log file will record a list of Telegram usernames which failed to get a match and are thus not included in the CSV output. They will need to be matched manually.
+2: Also, log file will record a list of Telegram usernames which failed to get a match and are thus not included in the CSV output. They will need to be matched manually.\
+3: Added manipulation of data to remove double inverted commas (") within cells and also enclose cell contents with 2 double inverted commas (" ") so that newlines within the cell contents can be retained.
 ####
 - **Other minor changes:**\
 1: Changed all of the `print` command formatting to the new-style `print (f'.......')` commands to fix issues running on Python==3.9\
 2: Now reads .csv files with header columns\
 3: Added logging for various functions for easier readability & debugging\
-4: New requirements.txt file with the latest versions of required python modules (tested working as of October 2021)
+4: New requirements.txt file with the latest versions of required python modules (tested working as of October 2021)\
 
 ## What I added
 - **transpose_for_bot.py** script to easily transpose the output .csv data, so they can be easily loaded into my [Angel and Mortals Dual Telegram Bots](https://github.com/yeozhenhao/Angels_Mortals_bot) to start an Angels and Mortals game.\
