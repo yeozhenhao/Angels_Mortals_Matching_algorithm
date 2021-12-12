@@ -86,8 +86,8 @@ Please check out his website if you want to learn how it works in Angels & Morta
 1: Output .csv only prints when matching algorithm successfully matches >80% of players in the inital .csv input file.\
 2: Also, log file will record a list of Telegram usernames which failed to get a match and are thus not included in the CSV output. They will need to be matched manually.\
 3: For cells of the column "Two truths one lie", "Interests", and "Introduction", I have added manipulation of data to:
-- Remove double inverted commas (") as they can screw up the CSV output.
-- Enclose cell contents with newline using 2 double inverted commas (" ") so that newlines within the cell contents can be retained.
+   - Remove double inverted commas (") as they can screw up the CSV output.
+   - Enclose cell contents with newline using 2 double inverted commas (" ") so that newlines within the cell contents can be retained.
 ####
 - **Other minor changes:**\
 1: Changed all of the `print` command formatting to the new-style `print (f'.......')` commands to fix issues running on Python==3.9\
