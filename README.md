@@ -141,8 +141,9 @@ The columns in playerlist.csv should be arranged as such, with 1 being the leftm
 10. Year of Study
 11. Faculty
 
-**2 Output CSVs** will have the same columns with a header. One CSV will show the accepted players, while the other CSV shoes the ones which were NOT accepted and have to be matched manually.\
-Players will be arranged such that for each player row in the output .csv file, his/her Angel is in the row above and his/her Mortal is in the row below.
+**2 Output CSVs** will have the same columns with a header.
+- One CSV will show the accepted players, while the other CSV shows the ones which were NOT accepted and have to be matched manually.
+- Players will be arranged such that for each player row in the output .csv file, his/her Angel is in the row above and his/her Mortal is in the row below.
 
 ## If you're looking for an Angels & Mortals Telegram Bot
 You may check out my other Python repository: [Angel and Mortals Dual Telegram Bots](https://github.com/yeozhenhao/Angels_Mortals_bot)
