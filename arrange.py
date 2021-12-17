@@ -47,6 +47,7 @@ def get_house_from_player(player):
     if player.housenumber == "":
         raise ValueError('House number provided ' + player.housenumber +
                          ' for player ' + str(player.username) + ' is invalid!')
+    return player.housenumber
 
 
 def get_cg_from_player(player):
